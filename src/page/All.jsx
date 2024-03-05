@@ -10,7 +10,6 @@ export const All = () => {
         setListTask([...listTask]);
     }
     const handleChecked = (data) => {
-        console.log(data)
         listTask = listTask.map(item => {
             if (item.taskId == data.taskId) {
                 return {

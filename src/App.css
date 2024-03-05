@@ -46,3 +46,10 @@
     background-color: dodgerblue;
     color: #fff;
 }
+.list-task{
+    margin-top: 10px;
+}
+.task{
+    display: flex;
+    justify-content: space-between;
+}
