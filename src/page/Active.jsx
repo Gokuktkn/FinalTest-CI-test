@@ -1,37 +1,35 @@
 import React, { useState } from 'react'
 import "../App.css";
 import { Task } from '../components/Task';
+import { Search } from '../components/Search';
 
 export const Active = () => {
-    let [listActive, setListActive] = useState(
-        [{
-            taskId: 1,
-            taskName: "Do coding challenge",
-            checked: false
-        },
-        {
-            taskId: 2,
-            taskName: "Do coding challenge",
-            checked: true
-        }]
-    )
-    const handleChange = () => {
+    let [listActive, setListActive] = useState([]);
+    const handleAddTask = (item) => {
+        listActive.unshift(item);
         setListActive([...listActive]);
     }
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleChecked = (data) => {
+        console.log(data)
+        listActive = listActive.map(item => {
+            if (item.taskId == data.taskId) {
+                return {
+                    ...item,
+                    checked: !item.checked
+                };
+            }
+            return item
+        })
+        setListActive([...listActive])
     }
     return (
-        <form>
-            <div className="search">
-                <input type="text" placeholder='Add details' className='search-input' />
-                <button type='submit' className='search-button' onClick={handleSubmit}>Add</button>
-            </div>
+        <div>
+            <Search addTask={handleAddTask} />
             <div className="list-task">
                 {listActive.map((data) => {
-                    return <Task item={data} key={data.taskId} onChange={handleChange} />
+                    return <Task item={data} key={data.taskId} onChecked={handleChecked} />
                 })}
             </div>
-        </form>
+        </div>
     )
 }
