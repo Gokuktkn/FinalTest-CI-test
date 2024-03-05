@@ -14,21 +14,17 @@ export const Search = ({ item, ...props }) => {
     }
     const handleSubmit = (item) => {
         item.preventDefault();
-        if (!item.target.value) {
-            alert("Không để trống")
-        } else{
-            props.addTask(formData);
-            setFormData({
-                taskId: uuidv4(),
-                taskName: "",
-                checked: false
-            })
-        }
+        props.addTask(formData);
+        setFormData({
+            taskId: uuidv4(),
+            taskName: "",
+            checked: false
+        })
     }
     return (
         <form>
             <div className="search">
-                <input type="text" placeholder='Add details' className='search-input' onChange={handleChange}/>
+                <input type="text" placeholder='Add details' className='search-input' onChange={handleChange} />
                 <button type='submit' className='search-button' onClick={handleSubmit} >Add</button>
             </div>
         </form>
