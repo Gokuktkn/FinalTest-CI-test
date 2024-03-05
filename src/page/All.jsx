@@ -17,7 +17,6 @@ export const All = () => {
     const handleAddTask = (item) => {
         listTask.unshift(item);
         setListTask([...listTask]);
-        console.log(listTask);
     }
     const handleChecked = (data) => {
         console.log(data)
